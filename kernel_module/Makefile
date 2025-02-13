@@ -1,9 +1,12 @@
 # Makefile for the ${PROJECT_NAME} kernel module
 
 obj-m += ${PROJECT_NAME}.o
+obj-m += gpio.o
+
+KDIR ?= /lib/modules/$(shell uname -r)/build
 
 all:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD)/kernel_module modules
+	make -C $(KDIR) M=$(PWD) modules
 
 clean:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD)/kernel_module clean
+	make -C $(KDIR) M=$(PWD) clean

@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            led_controller: led_controller {
+                compatible = "gpio-led-controller";
+                gpios = <&gpio 17 0>,  /* LED 1 */
+                        <&gpio 18 0>,  /* LED 2 */
+                        <&gpio 27 0>;  /* LED 3 */
+                status = "okay";
+            };
+        };
+    };
+};
